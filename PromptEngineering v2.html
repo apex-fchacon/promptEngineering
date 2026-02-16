@@ -1,0 +1,2520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Prompt Engineering Training - Intermediate Level</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom WordPress-inspired styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        }
+        
+        .wp-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .wp-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .wp-button {
+            transition: all 0.2s ease;
+        }
+        
+        .wp-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .module-content {
+            display: none;
+        }
+        
+        .module-content.active {
+            display: block;
+        }
+        
+        .modal {
+            display: none;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .progress-ring {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="wp-content px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-900">QA Prompt Engineering</h1>
+                        <p class="text-xs text-gray-500">Intermediate Level Training</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#overview" class="text-sm font-medium text-gray-700 hover:text-blue-600 transition">Overview</a>
+                    <a href="#modules" class="text-sm font-medium text-gray-700 hover:text-blue-600 transition">Modules</a>
+                    <a href="#progress" class="text-sm font-medium text-gray-700 hover:text-blue-600 transition">Progress</a>
+                    <a href="#resources" class="text-sm font-medium text-gray-700 hover:text-blue-600 transition">Resources</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+        <div class="wp-content px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Master AI-Powered QA Testing</h2>
+            <p class="text-xl mb-2 text-blue-100">Complete training in 8-10 hours</p>
+            <p class="text-lg mb-8 text-blue-100 max-w-3xl mx-auto">Learn to leverage AI tools to accelerate testing, improve documentation, and enhance your QA workflow.</p>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-clock text-2xl"></i>
+                    <span class="font-semibold">8-10 Hours</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tasks text-2xl"></i>
+                    <span class="font-semibold">19 Exercises</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-trophy text-2xl"></i>
+                    <span class="font-semibold">4 Challenges</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                    <span class="font-semibold">Intermediate</span>
+                </div>
+            </div>
+            
+            <button onclick="scrollToModules()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition wp-button">
+                <i class="fas fa-play mr-2"></i>Start Learning
+            </button>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-16">
+        <div class="wp-content px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">What You'll Learn</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="wp-card rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Testing</h3>
+                    <p class="text-gray-600">Communicate effectively with AI tools like Microsoft Copilot to accelerate QA work.</p>
+                </div>
+                
+                <div class="wp-card rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-file-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Test Documentation</h3>
+                    <p class="text-gray-600">Generate complete test cases, bug reports, traceability matrices in minutes.</p>
+                </div>
+                
+                <div class="wp-card rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Test Data Generation</h3>
+                    <p class="text-gray-600">Create realistic test data effortlessly and identify testing gaps through AI analysis.</p>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-sm font-semibold text-yellow-800">Important Security Note</h3>
+                        <p class="text-sm text-yellow-700 mt-1">DO NOT SHARE SENSITIVE INFORMATION (passwords, institutional branding, financial data) with AI tools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-16 mb-8 text-center">Training Structure</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
+                    <div class="flex-grow wp-card rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-900 mb-1">Module 1: Fundamentals (2 hours)</h3>
+                        <p class="text-sm text-gray-600">Your First Prompts - Learn basics and generate your first AI-based test cases.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
+                    <div class="flex-grow wp-card rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-900 mb-1">Module 2: Intermediate Techniques (2-3 hours)</h3>
+                        <p class="text-sm text-gray-600">Smarter Prompts - Master advanced techniques and create complete documentation.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
+                    <div class="flex-grow wp-card rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-900 mb-1">Module 3: Advanced Patterns (2-3 hours)</h3>
+                        <p class="text-sm text-gray-600">Patterns & Workflows - Build chained workflows and evaluate output quality.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
+                    <div class="flex-grow wp-card rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-900 mb-1">Module 4: Professional Integration (2 hours)</h3>
+                        <p class="text-sm text-gray-600">Integration & Governance - Apply AI with best practices and responsible use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Dashboard (Moved to top of Modules) -->
+    <section id="progress" class="py-16 bg-white">
+        <div class="wp-content px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">My Progress</h2>
+            
+            <!-- Export/Import Section -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                        <i class="fas fa-save mr-2 text-blue-600"></i>Save & Load Your Progress
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                        Your progress automatically downloads as a JSON file after each completed exercise/challenge.
+                        Keep these files safe and load the most recent one to continue your training.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-3 mb-4">
+                    <!-- Export Button -->
+                    <button onclick="manualExport()" 
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition wp-button flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i>
+                        Download Progress File
+                    </button>
+                    
+                    <!-- Import Button -->
+                    <button onclick="document.getElementById('fileInput').click()" 
+                            class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition wp-button flex items-center justify-center">
+                        <i class="fas fa-upload mr-2"></i>
+                        Load Progress File
+                    </button>
+                    
+                    <!-- Hidden File Input -->
+                    <input type="file" 
+                           id="fileInput" 
+                           accept=".json,application/json" 
+                           onchange="handleFileImport(event)" 
+                           style="display: none;">
+                </div>
+                
+                <div class="text-center">
+                    <span class="text-sm text-gray-600">
+                        <i class="far fa-clock mr-1"></i>
+                        Last saved: <span id="lastSaved" class="font-semibold">Never</span>
+                    </span>
+                </div>
+                
+                <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
+                    <p class="text-xs text-yellow-800">
+                        <i class="fas fa-lightbulb mr-1"></i>
+                        <strong>Tip:</strong> Create a folder called "QA Training Progress" to organize your progress files. 
+                        Each file is timestamped, so you can keep multiple versions.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="wp-card rounded-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2" id="completed-exercises">0</div>
+                    <p class="text-sm text-gray-600">Exercises Completed</p>
+                </div>
+                <div class="wp-card rounded-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2" id="completed-challenges">0</div>
+                    <p class="text-sm text-gray-600">Challenges Completed</p>
+                </div>
+                <div class="wp-card rounded-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-yellow-600 mb-2" id="total-points">0</div>
+                    <p class="text-sm text-gray-600">Total Points</p>
+                </div>
+                <div class="wp-card rounded-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-2" id="completion-percentage">0%</div>
+                    <p class="text-sm text-gray-600">Course Progress</p>
+                </div>
+            </div>
+
+            <div class="wp-card rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Module Progress</h3>
+                <div style="height: 300px;">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Completed Modules List -->
+            <div class="wp-card rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Completed Modules</h3>
+                    <button onclick="resetAllProgress()" class="text-sm text-red-600 hover:text-red-700 font-medium">
+                        <i class="fas fa-redo mr-1"></i>Reset All Progress
+                    </button>
+                </div>
+                <div id="completed-modules-list" class="space-y-3">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="py-16">
+        <div class="wp-content px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Training Modules</h2>
+            
+            <!-- Module 1 -->
+            <div class="wp-card rounded-lg mb-6 overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleModule('module1')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">Module 1</span>
+                            <h3 class="text-lg font-semibold text-gray-900">Fundamentals - "Your First Prompts"</h3>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm text-gray-600" id="module1-progress">0/5 exercises</span>
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="module1" class="module-content p-6">
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2">Learning Objectives</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Understand what a prompt is and how it works</li>
+                            <li>• Learn how to ask for what you need clearly</li>
+                            <li>• Generate your first AI-based test cases</li>
+                            <li>• Create simple test data</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3"><i class="far fa-clock mr-1"></i> Estimated time: 2 hours</p>
+                    </div>
+
+                    <h4 class="font-semibold text-gray-900 mb-4">Daily Exercises</h4>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 1</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Your First Test Case</h5>
+                                </div>
+                                <button onclick="openExercise('module1', 'day1')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Generate basic test cases for "Add a user" feature.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 20 min</span>
+                                <span class="completion-badge" id="module1-day1-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 2</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Generating Test Data</h5>
+                                </div>
+                                <button onclick="openExercise('module1', 'day2')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Create user information for testing registration systems.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 20 min</span>
+                                <span class="completion-badge" id="module1-day2-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 3</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Writing a Bug Report</h5>
+                                </div>
+                                <button onclick="openExercise('module1', 'day3')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Improve bug report quality with AI assistance.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 20 min</span>
+                                <span class="completion-badge" id="module1-day3-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 4</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Expanding Test Cases</h5>
+                                </div>
+                                <button onclick="openExercise('module1', 'day4')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Expand from simple to detailed test cases.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 20 min</span>
+                                <span class="completion-badge" id="module1-day4-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 5</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Creating a Testing Checklist</h5>
+                                </div>
+                                <button onclick="openExercise('module1', 'day5')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Generate quick smoke testing checklists.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 20 min</span>
+                                <span class="completion-badge" id="module1-day5-status">Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module Challenge -->
+                    <div class="mt-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-grow">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                                    <h4 class="font-semibold text-gray-900">Module 1 Challenge: My First AI-Generated Test Suite</h4>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-2"><strong>Scenario:</strong> Test a "Password Recovery" module with complete documentation.</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-600">
+                                    <span><i class="far fa-clock mr-1"></i> 45-60 min</span>
+                                    <span><i class="fas fa-star mr-1"></i> 100 points</span>
+                                    <span class="completion-badge" id="module1-challenge-status">Not Started</span>
+                                </div>
+                            </div>
+                            <button onclick="openChallenge('module1')" class="bg-yellow-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-yellow-700 transition wp-button ml-4">
+                                <i class="fas fa-rocket mr-1"></i> View Challenge
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="wp-card rounded-lg mb-6 overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleModule('module2')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">Module 2</span>
+                            <h3 class="text-lg font-semibold text-gray-900">Intermediate - "Smarter Prompts"</h3>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm text-gray-600" id="module2-progress">0/5 exercises</span>
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="module2" class="module-content p-6">
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2">Learning Objectives</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Learn techniques to obtain better results</li>
+                            <li>• Teach the AI using examples</li>
+                            <li>• Create complete testing documentation</li>
+                            <li>• Analyze test coverage</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3"><i class="far fa-clock mr-1"></i> Estimated time: 2-3 hours</p>
+                    </div>
+
+                    <h4 class="font-semibold text-gray-900 mb-4">Daily Exercises</h4>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 1</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Using Examples (Few-Shot)</h5>
+                                </div>
+                                <button onclick="openExercise('module2', 'day1')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Improve consistency using example-based prompts.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module2-day1-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 2</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Step-by-Step Reasoning</h5>
+                                </div>
+                                <button onclick="openExercise('module2', 'day2')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Ask AI to reason before responding.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module2-day2-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 3</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Role-Playing with AI</h5>
+                                </div>
+                                <button onclick="openExercise('module2', 'day3')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Use "Act As..." for expert-level scenarios.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module2-day3-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 4</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Structured Format Outputs</h5>
+                                </div>
+                                <button onclick="openExercise('module2', 'day4')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Generate test plans in Excel-ready formats.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module2-day4-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 5</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Iterative Refinement</h5>
+                                </div>
+                                <button onclick="openExercise('module2', 'day5')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Refine AI outputs through iteration.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module2-day5-status">Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-grow">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                                    <h4 class="font-semibold text-gray-900">Module 2 Challenge: Enterprise Test Documentation</h4>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-2"><strong>Scenario:</strong> Create testing documentation for e-commerce platform.</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-600">
+                                    <span><i class="far fa-clock mr-1"></i> 90-120 min</span>
+                                    <span><i class="fas fa-star mr-1"></i> 100 points</span>
+                                    <span class="completion-badge" id="module2-challenge-status">Not Started</span>
+                                </div>
+                            </div>
+                            <button onclick="openChallenge('module2')" class="bg-yellow-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-yellow-700 transition wp-button ml-4">
+                                <i class="fas fa-rocket mr-1"></i> View Challenge
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="wp-card rounded-lg mb-6 overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleModule('module3')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">Module 3</span>
+                            <h3 class="text-lg font-semibold text-gray-900">Advanced - "Patterns & Workflows"</h3>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm text-gray-600" id="module3-progress">0/5 exercises</span>
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="module3" class="module-content p-6">
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2">Learning Objectives</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Master advanced prompting patterns for QA</li>
+                            <li>• Build chained workflows (prompt chaining)</li>
+                            <li>• Evaluate output quality using rubrics</li>
+                            <li>• Use context for more accurate responses</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3"><i class="far fa-clock mr-1"></i> Estimated time: 2-3 hours</p>
+                    </div>
+
+                    <h4 class="font-semibold text-gray-900 mb-4">Daily Exercises</h4>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 1</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">ReAct Pattern for Requirements</h5>
+                                </div>
+                                <button onclick="openExercise('module3', 'day1')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Use Reason + Act pattern for analysis.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 35 min</span>
+                                <span class="completion-badge" id="module3-day1-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 2</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Prompt Chain for Shopping Cart</h5>
+                                </div>
+                                <button onclick="openExercise('module3', 'day2')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Build 4-step workflow for testing.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 35 min</span>
+                                <span class="completion-badge" id="module3-day2-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 3</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Synthetic Data with Constraints</h5>
+                                </div>
+                                <button onclick="openExercise('module3', 'day3')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Generate complex test data with constraints.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 35 min</span>
+                                <span class="completion-badge" id="module3-day3-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 4</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Critical Reviewer Pattern</h5>
+                                </div>
+                                <button onclick="openExercise('module3', 'day4')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Generate and critique test cases.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 35 min</span>
+                                <span class="completion-badge" id="module3-day4-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 5</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Output Evaluation with Rubric</h5>
+                                </div>
+                                <button onclick="openExercise('module3', 'day5')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Create and apply quality rubrics.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 35 min</span>
+                                <span class="completion-badge" id="module3-day5-status">Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-grow">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                                    <h4 class="font-semibold text-gray-900">Module 3 Challenge: My QA Copilot Library</h4>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-2"><strong>Scenario:</strong> Create reusable library of 15+ versioned prompts for fintech.</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-600">
+                                    <span><i class="far fa-clock mr-1"></i> 90-120 min</span>
+                                    <span><i class="fas fa-star mr-1"></i> 100 points</span>
+                                    <span class="completion-badge" id="module3-challenge-status">Not Started</span>
+                                </div>
+                            </div>
+                            <button onclick="openChallenge('module3')" class="bg-yellow-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-yellow-700 transition wp-button ml-4">
+                                <i class="fas fa-rocket mr-1"></i> View Challenge
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="wp-card rounded-lg mb-6 overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleModule('module4')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">Module 4</span>
+                            <h3 class="text-lg font-semibold text-gray-900">Professional - "Integration & Governance"</h3>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm text-gray-600" id="module4-progress">0/4 exercises</span>
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="module4" class="module-content p-6">
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2">Learning Objectives</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Integrate AI into QA process end-to-end</li>
+                            <li>• Define governance and responsible-use practices</li>
+                            <li>• Measure impact with metrics and ROI</li>
+                            <li>• Scale adoption within your team</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3"><i class="far fa-clock mr-1"></i> Estimated time: 2 hours</p>
+                    </div>
+
+                    <h4 class="font-semibold text-gray-900 mb-4">Daily Exercises</h4>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 1</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Internal Policy for AI Use</h5>
+                                </div>
+                                <button onclick="openExercise('module4', 'day1')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Create governance guidelines for AI use.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module4-day1-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 2</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Metrics Dashboard Design</h5>
+                                </div>
+                                <button onclick="openExercise('module4', 'day2')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Design dashboard to track AI impact.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module4-day2-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 3</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Prompt A/B Testing</h5>
+                                </div>
+                                <button onclick="openExercise('module4', 'day3')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Compare prompts and select optimal approaches.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module4-day3-status">Not Started</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-grow">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">Exercise 4</span>
+                                    <h5 class="font-semibold text-gray-900 mt-2">Stakeholder Communication Pack</h5>
+                                </div>
+                                <button onclick="openExercise('module4', 'day4')" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition wp-button">
+                                    <i class="fas fa-play mr-1"></i> Start
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2"><strong>Objective:</strong> Create presentation for AI adoption.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span><i class="far fa-clock mr-1"></i> 30 min</span>
+                                <span class="completion-badge" id="module4-day4-status">Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-grow">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                                    <h4 class="font-semibold text-gray-900">Final Capstone: End-to-End QA with AI</h4>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-2"><strong>Scenario:</strong> Complete end-to-end QA project with governance and ROI.</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-600">
+                                    <span><i class="far fa-clock mr-1"></i> 120 min</span>
+                                    <span><i class="fas fa-star mr-1"></i> 100 points</span>
+                                    <span class="completion-badge" id="module4-challenge-status">Not Started</span>
+                                </div>
+                            </div>
+                            <button onclick="openChallenge('module4')" class="bg-yellow-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-yellow-700 transition wp-button ml-4">
+                                <i class="fas fa-rocket mr-1"></i> View Challenge
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-16 bg-white">
+        <div class="wp-content px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Learning Resources</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="wp-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-book text-blue-600 mr-2"></i>
+                        Official Documentation
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://learn.microsoft.com/en-us/azure/copilot/write-effective-prompts" target="_blank" class="text-blue-600 hover:underline">Microsoft: Effective Prompts</a></li>
+                        <!-- Videos to be moved bellow 
+                        <li><a href="https://youtu.be/T-D1OfcDW1M?si=tt0FgSwaiYNqQ7gI" target="_blank" class="text-blue-600 hover:underline">RAG Concept</a></li>
+                        <li><a href="https://youtu.be/aywZrzNaKjs?si=AyunZGatrJa1yBqI" target="_blank" class="text-blue-600 hover:underline">LangChain Concept</a></li>
+                        <li><a href="https://youtu.be/_ZvnD73m40o?si=vwullNm3cvLAC5zg" target="_blank" class="text-blue-600 hover:underline">Learn Prompt</a></li> 
+                        -->
+                    </ul>
+                </div>
+
+                <div class="wp-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-tools text-green-600 mr-2"></i>
+                        AI Tools
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer"
+                            class="text-blue-600 hover:underline">Microsoft Copilot (Preferred)</a></li>
+                        <li><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
+                            class="text-blue-600 hover:underline">Google Gemini</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Support Video Tutorials Section -->
+            <div class="wp-card rounded-lg p-6 mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-video text-red-600 mr-2"></i>
+                    Support Videos
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="aspect-video bg-gray-100 rounded mb-3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm text-gray-900 mb-1">Getting Started with Prompt Engineering</h4>
+                        <p class="text-xs text-gray-600 mb-2">Introduction to writing effective prompts for QA testing</p>
+                        <a href="https://youtu.be/_ZvnD73m40o?si=vwullNm3cvLAC5zg" target="_blank" rel="noopener noreferrer"
+                        class="text-blue-600 text-xs hover:underline inline-flex items-center">
+                            <i class="fas fa-play mr-1"></i> Watch Tutorial
+                        </a>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="aspect-video bg-gray-100 rounded mb-3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm text-gray-900 mb-1">AI-Powered Test Case Generation</h4>
+                        <p class="text-xs text-gray-600 mb-2">Learn to generate comprehensive test cases using AI</p>
+                        <a href="https://youtu.be/ukffgLC5Sk0?si=8kgG9v0W25r_csIY"  target="_blank" rel="noopener noreferrer"
+                        class="text-blue-600 text-xs hover:underline inline-flex items-center">
+                            <i class="fas fa-play mr-1"></i> Watch Tutorial
+                        </a>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="aspect-video bg-gray-100 rounded mb-3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm text-gray-900 mb-1">RAG Concept</h4>
+                        <p class="text-xs text-gray-600 mb-2">RAG Concept explanation</p>
+                        <a href="https://youtu.be/T-D1OfcDW1M?si=tt0FgSwaiYNqQ7gI"  target="_blank" rel="noopener noreferrer"
+                        class="text-blue-600 text-xs hover:underline inline-flex items-center">
+                            <i class="fas fa-play mr-1"></i> Watch Tutorial
+                        </a>
+                    </div>
+
+                     <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="aspect-video bg-gray-100 rounded mb-3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm text-gray-900 mb-1">LangChain Concept</h4>
+                        <p class="text-xs text-gray-600 mb-2">LangChain Explanation</p>
+                        <a href="https://youtu.be/aywZrzNaKjs?si=AyunZGatrJa1yBqI"  target="_blank" rel="noopener noreferrer"
+                        class="text-blue-600 text-xs hover:underline inline-flex items-center">
+                            <i class="fas fa-play mr-1"></i> Watch Tutorial
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-xs text-gray-500">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Video links can be customized by your training administrator
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2 flex items-center justify-center">
+                    <i class="fas fa-laptop-code text-blue-600 mr-2"></i>
+                    Practice Site
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">Use this demo site for your exercises:</p>
+                <a href="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login" target="_blank" rel="noopener noreferrer"
+                class="inline-block bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition wp-button">
+                    <i class="fas fa-external-link-alt mr-2"></i>OrangeHRM Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="wp-content px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-2">&copy; 2024 QA Prompt Engineering Training. All rights reserved.</p>
+            <p class="text-sm text-gray-400">Remember: Never share sensitive information with AI tools.</p>
+        </div>
+    </footer>
+
+    <!-- Exercise Modal -->
+    <div id="exerciseModal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h2 id="exerciseTitle" class="text-2xl font-bold text-gray-900"></h2>
+                <button onclick="closeModal('exerciseModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="exerciseContent" class="p-6"></div>
+        </div>
+    </div>
+
+    <!-- Challenge Modal -->
+    <div id="challengeModal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h2 id="challengeTitle" class="text-2xl font-bold text-gray-900"></h2>
+                <button onclick="closeModal('challengeModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="challengeContent" class="p-6"></div>
+        </div>
+    </div>
+
+    <script>
+    // Exercise Data - All content in one place
+    const exerciseData = {
+        module1: {
+            day1: {
+                title: "Your First Test Case",
+                objective: "Generate basic test cases for an 'Add user' button in HR site.",
+                description: "In this exercise, you'll learn how to create effective prompts to generate test cases. You'll practice with a real demo site and learn the fundamentals of communicating with AI tools.",
+                practiceUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+                prompt: `Generate 5 test cases to test the "Add a user" feature in the online HR Site. Include:
+
+- 2 cases where everything works correctly
+- 3 cases where something goes wrong
+
+Format: table with columns [ID, Scenario, Steps, Expected Result]`,
+                tasks: [
+                    "Copy the provided prompt into your chosen AI tool (Microsoft Copilot or Google Gemini)",
+                    "Review the generated test cases carefully",
+                    "Compare the AI output with what you would create manually",
+                    "Ask the AI to refine the results (e.g., 'Make it more detailed' or 'Add more negative cases')",
+                    "Document the prompts you used and the results you got"
+                ],
+                learningPoints: [
+                    "Understanding the basic structure of a prompt",
+                    "Identifying positive vs negative test scenarios",
+                    "Learning to iterate and refine AI outputs"
+                ],
+                estimatedTime: "20 minutes"
+            },
+            day2: {
+                title: "Generating Test Data",
+                objective: "Create user information for testing registration systems.",
+                description: "Learn how to generate realistic test data quickly using AI. This skill will save you hours of manual data creation.",
+                prompt: `I need test data to test a registration system. Generate 10 users with:
+
+- Full name
+- Email (should look real)
+- Phone (format: +52 XXX XXX XXXX)
+- Age (between 18 and 65)
+
+Display them in table format.`,
+                tasks: [
+                    "Use the provided prompt to generate test data",
+                    "Copy the generated data into an Excel sheet or CSV file",
+                    "Verify that the data looks realistic and follows the specified format",
+                    "Try modifying the prompt to add additional fields (e.g., address, country)",
+                    "Use this generated data in your next testing session"
+                ],
+                learningPoints: [
+                    "Specifying data formats and constraints",
+                    "Generating realistic test data at scale",
+                    "Understanding data requirements for different test scenarios"
+                ],
+                estimatedTime: "20 minutes"
+            },
+            day3: {
+                title: "Writing a Bug Report",
+                objective: "Improve the quality of your bug reports with AI assistance.",
+                description: "Professional bug reports are crucial for effective communication with development teams. Learn how AI can help structure and enhance your bug documentation.",
+                prompt: `I found a bug: when I try to add more than 10 products to the cart, the page goes blank.
+
+Help me to write a professional bug report that includes:
+
+- Clear title
+- Problem description
+- Steps to reproduce (numbered)
+- Expected result
+- Actual result
+- Test environment (you may invent details if I don't have them)`,
+                tasks: [
+                    "Use the provided prompt with a real bug you've found (or use the example)",
+                    "Review the AI-generated bug report structure",
+                    "Compare your original description with the AI-enhanced version",
+                    "Identify what elements were improved or added",
+                    "Practice with 2-3 more bugs to build your skills"
+                ],
+                learningPoints: [
+                    "Standard bug report structure and components",
+                    "Clear and concise technical writing",
+                    "Providing sufficient detail for reproducibility"
+                ],
+                estimatedTime: "20 minutes"
+            },
+            day4: {
+                title: "Expanding Test Cases",
+                objective: "Expand from simple to detailed test cases covering multiple scenarios.",
+                description: "Take a basic test idea and expand it into comprehensive, detailed test cases that cover various scenarios and edge cases.",
+                prompt: `I have this basic test case: "Verify that the user can log in."
+
+Expand it into 3 detailed test cases covering:
+1) Successful login
+2) Incorrect password
+3) Non-existent user
+
+For each case include:
+- Detailed steps
+- Test data to use
+- Expected result`,
+                tasks: [
+                    "Use the provided prompt to expand the basic test case",
+                    "Analyze how the AI breaks down the scenarios",
+                    "Review the level of detail in each expanded test case",
+                    "Try expanding another basic test case on your own",
+                    "Compare AI expansion with your manual approach"
+                ],
+                learningPoints: [
+                    "Breaking down test scenarios systematically",
+                    "Adding appropriate detail to test cases",
+                    "Covering positive, negative, and edge cases"
+                ],
+                estimatedTime: "20 minutes"
+            },
+            day5: {
+                title: "Creating a Testing Checklist",
+                objective: "Generate quick smoke testing checklists for mobile banking applications.",
+                description: "Smoke testing checklists help ensure critical functionality works before detailed testing. Learn to create comprehensive checklists quickly.",
+                prompt: `Create a smoke testing checklist for a mobile banking application. It should cover:
+
+- Login/Logout
+- Balance inquiry
+- Transfers
+- Transaction history
+
+Format: list with checkboxes [ ] that I can copy into Word.`,
+                tasks: [
+                    "Generate the smoke testing checklist using the prompt",
+                    "Review the checklist for completeness",
+                    "Add any missing critical items you think should be included",
+                    "Copy the checklist into a Word document",
+                    "Use it in your next smoke testing session"
+                ],
+                learningPoints: [
+                    "Identifying critical features for smoke testing",
+                    "Creating reusable testing checklists",
+                    "Formatting outputs for practical use"
+                ],
+                estimatedTime: "20 minutes"
+            }
+        },
+        module2: {
+            day1: {
+                title: "Using Examples (Few-Shot Learning)",
+                objective: "Improve consistency of results using example-based prompts.",
+                description: "Learn the 'Few-Shot' technique - showing AI examples of what you want helps it understand your exact requirements and format preferences.",
+                prompt: `Generate test cases following this exact format:
+
+Example:
+---
+TC-001: Successful login with valid credentials
+Priority: High
+Preconditions: User previously registered
+Steps:
+1. Open login page
+2. Enter email: usuario@test.com
+3. Enter password: Test123!
+4. Click the "Log In" button
+Expected Result: User is redirected to the main dashboard
+---
+
+Now generate 5 similar cases for different login scenarios.`,
+                tasks: [
+                    "Use the provided prompt with the example format",
+                    "Compare outputs with and without the example",
+                    "Notice how the example improves consistency",
+                    "Create your own template for bug reports",
+                    "Test your template with different bug scenarios"
+                ],
+                learningPoints: [
+                    "Few-shot learning technique",
+                    "Template-based prompting",
+                    "Maintaining consistency across outputs"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day2: {
+                title: "Step-by-Step Reasoning",
+                objective: "Ask AI to reason before responding for better test analysis.",
+                description: "The 'Think Step by Step' technique helps AI provide more thorough and well-reasoned outputs by breaking down complex tasks.",
+                prompt: `I need to test a shopping cart. Before generating test cases:
+
+- List all the cart functionalities that should be tested
+- Identify the most critical ones
+- Determine what types of tests I need (functional, usability, etc.)
+- Then generate the prioritized test cases
+
+Ask the AI to "think out loud" while performing this analysis.`,
+                tasks: [
+                    "Use the prompt and observe the AI's reasoning process",
+                    "Review how it breaks down the problem",
+                    "Compare direct test case generation vs. reasoned approach",
+                    "Apply this technique to test another complex feature",
+                    "Document which approach yields better results"
+                ],
+                learningPoints: [
+                    "Chain-of-thought prompting",
+                    "Systematic test planning",
+                    "Breaking down complex testing scenarios"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day3: {
+                title: "Role-Playing with AI",
+                objective: "Use 'Act As...' technique for expert-level test scenarios.",
+                description: "By assigning a specific role to the AI, you can get more specialized and expert-level insights for your testing needs.",
+                prompt: `Act as a Senior QA with 10 years of experience in e-commerce.
+
+I'm testing a payment module and need to identify the riskiest scenarios a junior tester might overlook.
+
+List 10 critical scenarios that a junior tester might miss.`,
+                tasks: [
+                    "Use the provided 'Act As' prompt",
+                    "Analyze the sophistication of the response",
+                    "Compare with a prompt that doesn't use role-playing",
+                    "Try different roles (security expert, UX specialist)",
+                    "Document which roles provide the most value for different tasks"
+                ],
+                learningPoints: [
+                    "Role-based prompting technique",
+                    "Getting expert-level insights",
+                    "Identifying advanced test scenarios"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day4: {
+                title: "Structured Format Outputs",
+                objective: "Generate test plans in Excel-ready table formats.",
+                description: "Learn to request specific formats that can be directly imported into your testing tools and documentation.",
+                prompt: `Generate a test plan in Excel-table format with the following columns:
+Module, Functionality, Test Cases, Priority, Estimated Time, Assigned To
+
+For a hotel booking application that includes:
+- Hotel search
+- Filters
+- Reservation
+- Payment
+- Email confirmation`,
+                tasks: [
+                    "Generate the structured test plan",
+                    "Copy the output into Excel or Google Sheets",
+                    "Verify all data imports correctly",
+                    "Customize the format for your organization's needs",
+                    "Create templates for different document types"
+                ],
+                learningPoints: [
+                    "Structured output formatting",
+                    "Creating tool-ready documentation",
+                    "Efficient data organization"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day5: {
+                title: "Iterative Refinement",
+                objective: "Refine AI outputs through iterative prompting.",
+                description: "Learn how to have a conversation with AI to progressively improve outputs through multiple iterations.",
+                prompt: `Initial prompt: Generate 5 test cases for user registration.
+
+Then refine with:
+- "Add more detail to the steps"
+- "Include data validation test cases"
+- "Add security-focused scenarios"
+- "Format as a professional test suite document"`,
+                tasks: [
+                    "Start with the basic prompt",
+                    "Apply each refinement step sequentially",
+                    "Observe how the output improves with each iteration",
+                    "Learn when to refine vs. start over",
+                    "Practice iterative refinement on your own test scenario"
+                ],
+                learningPoints: [
+                    "Iterative prompt refinement",
+                    "Building on previous outputs",
+                    "Knowing when and how to refine"
+                ],
+                estimatedTime: "30 minutes"
+            }
+        },
+        module3: {
+            day1: {
+                title: "ReAct Pattern for Requirements",
+                objective: "Use Reason + Act pattern for requirement analysis.",
+                description: "The ReAct pattern combines reasoning and action - the AI thinks through the problem before taking action, resulting in more thorough analysis.",
+                prompt: `Use the ReAct pattern with [Reasoning] → [Actions] structure:
+
+Analyze these user story requirements for a checkout process:
+"As a customer, I want to review my order before payment so I can verify items and quantities."
+
+[Reasoning]
+- What are the testable components?
+- What could go wrong?
+- What are the edge cases?
+
+[Actions]
+- Generate prioritized test scenarios with justification`,
+                tasks: [
+                    "Apply the ReAct prompt to the given requirement",
+                    "Analyze the reasoning section carefully",
+                    "Review how reasoning influences the actions",
+                    "Try the pattern with your own requirements",
+                    "Compare with direct test case generation"
+                ],
+                learningPoints: [
+                    "ReAct prompting pattern",
+                    "Requirement analysis methodology",
+                    "Justifying test priorities"
+                ],
+                estimatedTime: "35 minutes"
+            },
+            day2: {
+                title: "Prompt Chain for Shopping Cart",
+                objective: "Build a 4-step workflow for comprehensive testing.",
+                description: "Prompt chaining creates a workflow where each step builds on the previous one, creating a comprehensive testing approach.",
+                prompt: `Step 1: List all validations needed for a shopping cart
+Step 2: Generate 20 test cases based on those validations
+Step 3: Create test data for those cases
+Step 4: Generate a regression checklist
+
+Execute each step sequentially, using outputs from previous steps.`,
+                tasks: [
+                    "Execute the 4-step chain sequentially",
+                    "Save outputs from each step",
+                    "Use each output as input for the next step",
+                    "Analyze how chaining creates comprehensive coverage",
+                    "Design your own prompt chain for a different feature"
+                ],
+                learningPoints: [
+                    "Prompt chaining technique",
+                    "Workflow automation with AI",
+                    "Building comprehensive test suites"
+                ],
+                estimatedTime: "35 minutes"
+            },
+            day3: {
+                title: "Synthetic Data with Constraints",
+                objective: "Generate complex test data with specific constraints.",
+                description: "Learn to generate sophisticated test data that meets complex business rules and constraints.",
+                prompt: `Generate 100 test users for an e-commerce platform with these constraints:
+
+- Domains: gmail.com, yahoo.com, outlook.com only
+- Formats: Emails valid format, phones +1-XXX-XXX-XXXX
+- Uniqueness: All emails must be unique
+- Ranges: Ages 18-75, registration dates last 2 years
+- Relationships: 30% should have multiple orders
+
+Output: Excel-ready CSV format`,
+                tasks: [
+                    "Generate the complex test data set",
+                    "Verify all constraints are met",
+                    "Import into Excel and validate",
+                    "Add additional constraints and regenerate",
+                    "Create constraint templates for different scenarios"
+                ],
+                learningPoints: [
+                    "Complex constraint specification",
+                    "Data relationship modeling",
+                    "Large-scale test data generation"
+                ],
+                estimatedTime: "35 minutes"
+            },
+            day4: {
+                title: "Critical Reviewer Pattern",
+                objective: "Generate and critique test cases for improvement.",
+                description: "Use a two-phase approach: first generate test cases, then critically review and improve them.",
+                prompt: `Phase 1: Generate 10 payment module test cases
+
+Phase 2: Act as a critical reviewer and:
+- Identify gaps in coverage
+- Find missing edge cases
+- Suggest improvements based on risk
+- Rate each case's effectiveness
+
+Then provide improved versions.`,
+                tasks: [
+                    "Execute both phases of the pattern",
+                    "Analyze the critique provided",
+                    "Compare original vs. improved test cases",
+                    "Apply this pattern to your own test cases",
+                    "Document improvement patterns you discover"
+                ],
+                learningPoints: [
+                    "Self-critique pattern",
+                    "Test case quality improvement",
+                    "Coverage gap identification"
+                ],
+                estimatedTime: "35 minutes"
+            },
+            day5: {
+                title: "Output Evaluation with Rubric",
+                objective: "Create and apply quality rubrics to AI outputs.",
+                description: "Develop systematic methods to evaluate the quality of AI-generated testing artifacts.",
+                prompt: `Create a 0-5 rubric for evaluating test cases on:
+- Completeness (all necessary info present)
+- Accuracy (technically correct)
+- Usefulness (practical value)
+- Consistency (follows standards)
+
+Then apply it to evaluate test cases from two different AI models.`,
+                tasks: [
+                    "Create the evaluation rubric",
+                    "Generate test cases from two different AI tools",
+                    "Apply your rubric to both sets",
+                    "Compare scores and quality",
+                    "Refine your rubric based on insights"
+                ],
+                learningPoints: [
+                    "Quality evaluation frameworks",
+                    "Systematic output assessment",
+                    "Model comparison methodology"
+                ],
+                estimatedTime: "35 minutes"
+            }
+        },
+        module4: {
+            day1: {
+                title: "Internal Policy for AI Use in QA",
+                objective: "Create governance guidelines for responsible AI use.",
+                description: "Establish organizational policies to ensure safe, effective, and responsible use of AI in QA processes.",
+                prompt: `Create a 1-2 page internal policy for AI use in QA that includes:
+
+- What data is allowed/prohibited
+- Mandatory human review requirements
+- Prompt logging and version control
+- Minimum training requirements
+- Quality standards
+- Escalation procedures`,
+                tasks: [
+                    "Generate the policy document",
+                    "Review for completeness and practicality",
+                    "Customize for your organization's context",
+                    "Share with team members for feedback",
+                    "Create implementation checklist"
+                ],
+                learningPoints: [
+                    "AI governance principles",
+                    "Policy documentation",
+                    "Risk management in AI adoption"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day2: {
+                title: "Metrics Dashboard Design",
+                objective: "Design dashboard to track AI impact on QA processes.",
+                description: "Create a comprehensive metrics system to measure the value and impact of AI in your testing workflow.",
+                prompt: `Design a metrics dashboard (paper prototype) that tracks:
+
+- % of AI-reusable test cases
+- Time saved per module
+- Defects identified through AI
+- Requirement coverage improvement
+- Test execution velocity
+- Quality score trends
+
+Describe the charts, tables, and key insights each metric provides.`,
+                tasks: [
+                    "Design the metrics dashboard structure",
+                    "Define calculation methods for each metric",
+                    "Create sample visualizations (sketches or mockups)",
+                    "Establish baseline and target values",
+                    "Plan data collection process"
+                ],
+                learningPoints: [
+                    "KPI definition and tracking",
+                    "ROI measurement",
+                    "Data-driven decision making"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day3: {
+                title: "Prompt A/B Testing",
+                objective: "Compare prompt versions and select optimal approaches.",
+                description: "Apply scientific methods to optimize your prompts by comparing different versions systematically.",
+                prompt: `Compare two prompt versions for generating checkout test cases:
+
+Version A: "Generate test cases for checkout"
+Version B: "Act as a senior QA. Generate comprehensive test cases for e-commerce checkout covering happy path, error scenarios, and edge cases. Include security and performance considerations."
+
+Evaluate using your rubric:
+- Generate 10 cases with each
+- Score on completeness, accuracy, usefulness
+- Select the winner with justification`,
+                tasks: [
+                    "Execute both prompt versions",
+                    "Apply your evaluation rubric",
+                    "Document differences in output quality",
+                    "Identify which prompt elements drive better results",
+                    "Create your own A/B test for another scenario"
+                ],
+                learningPoints: [
+                    "A/B testing methodology",
+                    "Prompt optimization",
+                    "Data-driven prompt engineering"
+                ],
+                estimatedTime: "30 minutes"
+            },
+            day4: {
+                title: "Stakeholder Communication Pack",
+                objective: "Create presentation for AI adoption in QA teams.",
+                description: "Develop compelling communication materials to promote AI adoption and demonstrate value to stakeholders.",
+                prompt: `Create a brief presentation deck covering:
+
+- Benefits of AI in QA (with examples)
+- Potential risks and mitigation
+- Key metrics from pilot program
+- Implementation roadmap
+- Training plan
+- Success stories
+- Next steps and budget needs
+
+Target audience: QA managers and directors`,
+                tasks: [
+                    "Generate the presentation outline",
+                    "Develop key talking points for each section",
+                    "Create supporting data visualizations",
+                    "Practice delivery with a colleague",
+                    "Gather feedback and refine"
+                ],
+                learningPoints: [
+                    "Stakeholder communication",
+                    "Change management",
+                    "Value proposition development"
+                ],
+                estimatedTime: "30 minutes"
+            }
+        }
+    };
+
+    // Challenge Data
+    const challengeData = {
+        module1: {
+            title: "My First AI-Generated Test Suite",
+            scenario: "You must test a 'Password Recovery' module for a web application.",
+            description: "This challenge combines all the skills you've learned in Module 1. You'll create a complete test suite including test cases, test data, traceability matrix, and a summary report.",
+            tasks: [
+                "Use AI to generate 10 complete test cases for password recovery",
+                "Generate 5 test users with realistic emails and account details",
+                "Create a simple traceability matrix (requirement → test cases)",
+                "Write a summary report of what you will test",
+                "Include screenshots of the prompts you used"
+            ],
+            deliverables: [
+                "Word or Google Docs document with all components",
+                "Screenshots of prompts used",
+                "Brief reflection: What took the most time? What was easier with AI?"
+            ],
+            evaluationCriteria: [
+                "Completeness of test cases (25 points)",
+                "Quality of test data (15 points)",
+                "Traceability matrix accuracy (20 points)",
+                "Summary report clarity (20 points)",
+                "Prompt documentation (10 points)",
+                "Reflection insights (10 points)"
+            ],
+            estimatedTime: "45-60 minutes",
+            totalPoints: 100
+        },
+        module2: {
+            title: "Enterprise Test Documentation",
+            scenario: "Create complete testing documentation for a large-scale e-commerce platform launch.",
+            description: "This challenge simulates a real enterprise testing project. You'll create a comprehensive test plan, test case repository, bug reports, metrics dashboard, and stakeholder communications.",
+            tasks: [
+                "Create a Master Test Plan - Executive Summary, Scope, Strategy, Schedule, Resources",
+                "Build Test Case Repository - 50+ test cases across modules",
+                "Generate Bug Report Portfolio - 15 simulated bugs with varying severities",
+                "Design Testing Metrics Dashboard - Progress, pass/fail, coverage",
+                "Create Stakeholder Communication - Status report, executive summary"
+            ],
+            deliverables: [
+                "Master Test Plan document",
+                "Excel workbook with test cases and test data",
+                "Bug report portfolio with 15 documented bugs",
+                "Metrics dashboard design",
+                "Communication pack (2 documents)"
+            ],
+            evaluationCriteria: [
+                "Completion of all deliverables (30 points)",
+                "Professionalism and quality (25 points)",
+                "Critical thinking demonstrated (25 points)",
+                "Effective use of AI (20 points)"
+            ],
+            estimatedTime: "90-120 minutes",
+            totalPoints: 100
+        },
+        module3: {
+            title: "My QA Copilot Library",
+            scenario: "Create a reusable library of versioned prompts for a fintech QA domain.",
+            description: "Build a professional prompt library that your entire QA team can use. This library should include 15+ prompts covering various testing activities with examples, version control, and usage guidance.",
+            tasks: [
+                "Create 15+ versioned prompts for fintech domain",
+                "Cover: requirement analysis, test case generation, test data, bug reports",
+                "Include for each prompt: name, version, purpose, inputs/outputs, examples",
+                "Attach evaluation rubric for each prompt type",
+                "Provide before/after examples showing improvement",
+                "Document lessons learned and optimization tips"
+            ],
+            deliverables: [
+                "Prompt library document (organized by category)",
+                "Version control log",
+                "Evaluation rubrics for each prompt category",
+                "Before/after comparison examples (5 minimum)",
+                "Usage guidelines and best practices"
+            ],
+            evaluationCriteria: [
+                "Number and quality of prompts (30 points)",
+                "Documentation completeness (20 points)",
+                "Rubric effectiveness (20 points)",
+                "Practical examples (15 points)",
+                "Reusability and organization (15 points)"
+            ],
+            estimatedTime: "90-120 minutes",
+            totalPoints: 100
+        },
+        module4: {
+            title: "End-to-End QA with AI - Capstone Project",
+            scenario: "Integrate AI into a complete QA process for a major software release, including governance, metrics, and ROI analysis.",
+            description: "This final capstone project demonstrates your mastery of AI-powered QA. You'll deliver a complete, enterprise-ready QA project with governance frameworks, comprehensive testing artifacts, and business value analysis.",
+            tasks: [
+                "Create versioned prompt library (20+ prompts) with examples",
+                "Update Master Test Plan from Module 2",
+                "Generate updated repository of 60+ test cases and 20 simulated bugs",
+                "Build metrics dashboard with interpretation",
+                "Create governance policy and responsible AI guidelines",
+                "Perform A/B testing on critical prompts",
+                "Write final report with lessons learned and Go/No-Go recommendation",
+                "Calculate and present ROI metrics"
+            ],
+            deliverables: [
+                "Complete prompt library with version control",
+                "Master Test Plan (updated)",
+                "Test case repository (60+ cases)",
+                "Bug repository (20+ bugs)",
+                "Metrics dashboard",
+                "Governance policy document",
+                "A/B testing results report",
+                "Final capstone report with ROI analysis"
+            ],
+            evaluationCriteria: [
+                "Coverage and completeness (25 points)",
+                "Technical quality (25 points)",
+                "Governance and ethics implementation (20 points)",
+                "Communication and presentation (15 points)",
+                "Impact and ROI demonstration (15 points)"
+            ],
+            estimatedTime: "120 minutes",
+            totalPoints: 100
+        }
+    };
+
+    // Module names mapping
+    const moduleNames = {
+        module1: "Module 1: Fundamentals",
+        module2: "Module 2: Intermediate Techniques",
+        module3: "Module 3: Advanced Patterns",
+        module4: "Module 4: Professional Integration"
+    };
+
+    // Progress Manager Class
+    class ProgressManager {
+        constructor() {
+            // Initialize with empty progress (no localStorage)
+            this.progress = {
+                exercises: {},
+                challenges: {},
+                metadata: {
+                    createdAt: new Date().toISOString(),
+                    lastModified: new Date().toISOString(),
+                    version: '2.0'
+                }
+            };
+            console.log('ProgressManager initialized with clean state');
+        }
+
+        // Export progress to JSON file (download)
+        exportProgress() {
+            try {
+                // Update metadata
+                this.progress.metadata = this.progress.metadata || {};
+                this.progress.metadata.lastModified = new Date().toISOString();
+                this.progress.metadata.version = '2.0';
+                
+                // Calculate stats
+                const stats = this.getCompletionStats();
+                this.progress.metadata.totalExercises = stats.totalExercises;
+                this.progress.metadata.completedExercises = stats.completedExercises;
+                this.progress.metadata.completedChallenges = stats.completedChallenges;
+                this.progress.metadata.totalPoints = stats.totalPoints;
+                
+                // Convert to JSON with pretty printing
+                const dataStr = JSON.stringify(this.progress, null, 2);
+                
+                // Create Blob for efficient memory usage
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                
+                // Generate filename with timestamp
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+                const filename = `qa-training-progress-${timestamp}.json`;
+                
+                // Method 1: Try modern download API first
+                if (navigator.msSaveBlob) {
+                    // IE 10+ / Edge Legacy
+                    navigator.msSaveBlob(blob, filename);
+                    this.updateLastSaved();
+                    console.log('Progress exported via msSaveBlob:', filename);
+                    return filename;
+                }
+                
+                // Method 2: Standard approach with enhancements for custom download settings
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                
+                // Force download attribute
+                link.setAttribute('download', filename);
+                link.setAttribute('target', '_blank');
+                
+                // Make link invisible but ensure it's in DOM
+                link.style.display = 'none';
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                
+                // Trigger download with multiple methods for compatibility
+                if (typeof link.click === 'function') {
+                    // Modern browsers
+                    link.click();
+                } else {
+                    // Fallback for older browsers
+                    const evt = document.createEvent('MouseEvents');
+                    evt.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    link.dispatchEvent(evt);
+                }
+                
+                // Clean up after delay to ensure download starts
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 500);
+                
+                // Update last saved indicator
+                this.updateLastSaved();
+                
+                console.log('Progress exported to:', filename);
+                console.log('Download initiated. Check your browser downloads (Ctrl+J in Chrome, Ctrl+Shift+Y in Firefox)');
+                
+                return filename;
+            } catch (error) {
+                console.error('Export error:', error);
+                // Even if export fails, return a filename so user knows something was attempted
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+                const filename = `qa-training-progress-${timestamp}.json`;
+                throw new Error(`Failed to export progress: ${error.message}`);
+            }
+        }
+        
+        // Import progress from JSON file (upload)
+        importProgress(file) {
+            return new Promise((resolve, reject) => {
+                // Check file size (max 10MB)
+                const maxSize = 10 * 1024 * 1024;
+                if (file.size > maxSize) {
+                    reject(new Error('File too large. Maximum size is 10MB.'));
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        
+                        // Validate structure
+                        if (!data.exercises || !data.challenges) {
+                            throw new Error('Invalid progress file format. Missing required fields.');
+                        }
+                        
+                        // Check version
+                        if (data.metadata?.version && data.metadata.version !== '2.0') {
+                            console.warn('Loading from different version:', data.metadata.version);
+                        }
+                        
+                        // Load data
+                        this.progress = data;
+                        
+                        // Ensure metadata exists
+                        if (!this.progress.metadata) {
+                            this.progress.metadata = {
+                                createdAt: new Date().toISOString(),
+                                version: '2.0'
+                            };
+                        }
+                        
+                        // Update UI
+                        this.updateUI();
+                        this.updateLastSaved();
+                        
+                        const stats = this.getCompletionStats();
+                        console.log('Progress imported:', stats.completedExercises, 'exercises,', stats.completedChallenges, 'challenges');
+                        
+                        resolve({
+                            exercises: stats.completedExercises,
+                            challenges: stats.completedChallenges,
+                            points: stats.totalPoints
+                        });
+                    } catch (error) {
+                        console.error('Error importing progress:', error);
+                        reject(error);
+                    }
+                };
+                
+                reader.onerror = () => reject(new Error('Failed to read file'));
+                
+                reader.readAsText(file);
+            });
+        }
+        
+        updateLastSaved() {
+            const lastSavedEl = document.getElementById('lastSaved');
+            if (lastSavedEl) {
+                const now = new Date();
+                lastSavedEl.textContent = now.toLocaleString();
+            }
+        }
+
+        markExerciseComplete(module, day, data) {
+            console.log('Marking exercise complete:', module, day);
+            
+            if (!this.progress.exercises[module]) {
+                this.progress.exercises[module] = {};
+            }
+            
+            this.progress.exercises[module][day] = {
+                completed: true,
+                completedAt: new Date().toISOString(),
+                ...data
+            };
+            
+            // Auto-export progress
+            console.log('Auto-exporting progress...');
+            const filename = this.exportProgress();
+            
+            // Update UI
+            this.updateUI();
+            
+            console.log('Exercise completed and saved to:', filename);
+            return filename;
+        }
+
+        markChallengeComplete(module, data) {
+            console.log('Marking challenge complete:', module);
+            
+            this.progress.challenges[module] = {
+                completed: true,
+                completedAt: new Date().toISOString(),
+                score: data.score || 0,
+                ...data
+            };
+            
+            // Auto-export progress
+            console.log('Auto-exporting progress...');
+            const filename = this.exportProgress();
+            
+            // Update UI
+            this.updateUI();
+            
+            console.log('Challenge completed and saved to:', filename);
+            return filename;
+        }
+
+        resetModule(module) {
+            if (confirm(`Are you sure you want to reset ${moduleNames[module]}? This will delete all progress for this module.`)) {
+                delete this.progress.exercises[module];
+                delete this.progress.challenges[module];
+                
+                // Export updated progress
+                const filename = this.exportProgress();
+                
+                alert(`Module progress reset successfully!\nNew progress file: ${filename}`);
+            }
+        }
+
+        isExerciseComplete(module, day) {
+            return this.progress.exercises[module]?.[day]?.completed || false;
+        }
+
+        isChallengeComplete(module) {
+            return this.progress.challenges[module]?.completed || false;
+        }
+
+        getCompletedModules() {
+            const completed = [];
+            for (let i = 1; i <= 4; i++) {
+                const moduleKey = `module${i}`;
+                const exercises = this.progress.exercises[moduleKey] || {};
+                const challenge = this.progress.challenges[moduleKey] || {};
+                const total = (i === 4 ? 4 : 5) + 1; // exercises + challenge
+                const completedCount = Object.keys(exercises).length + (challenge.completed ? 1 : 0);
+                
+                if (completedCount > 0) {
+                    completed.push({
+                        module: moduleKey,
+                        name: moduleNames[moduleKey],
+                        completedExercises: Object.keys(exercises).length,
+                        totalExercises: i === 4 ? 4 : 5,
+                        challengeCompleted: challenge.completed || false,
+                        challengeScore: challenge.score || 0,
+                        completedAt: challenge.completedAt || exercises[Object.keys(exercises)[0]]?.completedAt,
+                        percentage: Math.round((completedCount / total) * 100)
+                    });
+                }
+            }
+            return completed;
+        }
+
+        getCompletionStats() {
+            const totalExercises = 19;
+            const totalChallenges = 4;
+            
+            let completedExercises = 0;
+            let completedChallenges = 0;
+            let totalPoints = 0;
+
+            Object.values(this.progress.exercises).forEach(module => {
+                completedExercises += Object.keys(module).length;
+            });
+
+            Object.values(this.progress.challenges).forEach(challenge => {
+                if (challenge.completed) {
+                    completedChallenges++;
+                    totalPoints += challenge.score || 0;
+                }
+            });
+
+            const completionPercentage = Math.round(
+                ((completedExercises + completedChallenges) / (totalExercises + totalChallenges)) * 100
+            );
+
+            return {
+                completedExercises,
+                totalExercises,
+                completedChallenges,
+                totalChallenges,
+                totalPoints,
+                completionPercentage
+            };
+        }
+
+        updateUI() {
+            const stats = this.getCompletionStats();
+            
+            document.getElementById('completed-exercises').textContent = stats.completedExercises;
+            document.getElementById('completed-challenges').textContent = stats.completedChallenges;
+            document.getElementById('total-points').textContent = stats.totalPoints;
+            document.getElementById('completion-percentage').textContent = stats.completionPercentage + '%';
+
+            // Update module progress
+            for (let i = 1; i <= 4; i++) {
+                const moduleKey = `module${i}`;
+                const moduleExercises = this.progress.exercises[moduleKey] || {};
+                const completed = Object.keys(moduleExercises).length;
+                const total = i === 4 ? 4 : 5;
+                
+                const progressElement = document.getElementById(`${moduleKey}-progress`);
+                if (progressElement) {
+                    progressElement.textContent = `${completed}/${total} exercises`;
+                }
+            }
+
+            // Update individual statuses
+            Object.keys(this.progress.exercises).forEach(module => {
+                Object.keys(this.progress.exercises[module]).forEach(day => {
+                    const statusElement = document.getElementById(`${module}-${day}-status`);
+                    if (statusElement) {
+                        statusElement.textContent = 'Completed';
+                        statusElement.className = 'completion-badge bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold';
+                    }
+                });
+            });
+
+            Object.keys(this.progress.challenges).forEach(module => {
+                const statusElement = document.getElementById(`${module}-challenge-status`);
+                if (statusElement) {
+                    statusElement.textContent = 'Completed';
+                    statusElement.className = 'completion-badge bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold';
+                }
+            });
+
+            this.updateChart();
+            this.updateCompletedModulesList();
+        }
+
+        updateCompletedModulesList() {
+            const container = document.getElementById('completed-modules-list');
+            if (!container) return;
+
+            const completedModules = this.getCompletedModules();
+            
+            if (completedModules.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">No modules completed yet. Start learning to see your progress here!</p>';
+                return;
+            }
+
+            container.innerHTML = completedModules.map(module => `
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex-grow">
+                            <h4 class="font-semibold text-gray-900">${module.name}</h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                ${module.completedExercises}/${module.totalExercises} exercises • 
+                                Challenge: ${module.challengeCompleted ? 'Completed (' + module.challengeScore + ' points)' : 'Not completed'}
+                            </p>
+                            ${module.completedAt ? `<p class="text-xs text-gray-500 mt-1">Last updated: ${new Date(module.completedAt).toLocaleDateString()}</p>` : ''}
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-blue-600">${module.percentage}%</div>
+                                <div class="text-xs text-gray-500">Complete</div>
+                            </div>
+                            <button onclick="progressManager.resetModule('${module.module}')" class="text-red-600 hover:text-red-700 text-sm">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: ${module.percentage}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        updateChart() {
+            const ctx = document.getElementById('progressChart');
+            if (!ctx) return;
+
+            const moduleData = [1, 2, 3, 4].map(i => {
+                const moduleKey = `module${i}`;
+                const exercises = this.progress.exercises[moduleKey] || {};
+                const challenge = this.progress.challenges[moduleKey] || {};
+                const total = (i === 4 ? 4 : 5) + 1;
+                const completed = Object.keys(exercises).length + (challenge.completed ? 1 : 0);
+                return Math.round((completed / total) * 100);
+            });
+
+            // Safely destroy existing chart
+            if (window.progressChart && typeof window.progressChart.destroy === 'function') {
+                try {
+                    window.progressChart.destroy();
+                } catch (e) {
+                    console.warn('Chart destroy error:', e);
+                }
+            }
+
+            window.progressChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Module 1', 'Module 2', 'Module 3', 'Module 4'],
+                    datasets: [{
+                        label: 'Completion %',
+                        data: moduleData,
+                        backgroundColor: 'rgba(37, 99, 235, 0.8)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Completion: ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // Initialize
+    const progressManager = new ProgressManager();
+
+    // UI Functions
+    function scrollToModules() {
+        document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleModule(moduleId) {
+        const content = document.getElementById(moduleId);
+        if (content.classList.contains('active')) {
+            content.classList.remove('active');
+        } else {
+            content.classList.add('active');
+        }
+    }
+
+    function openExercise(module, day) {
+        const exercise = exerciseData[module][day];
+        const modal = document.getElementById('exerciseModal');
+        const title = document.getElementById('exerciseTitle');
+        const content = document.getElementById('exerciseContent');
+        
+        // Check if exercise is already completed and load data
+        const existingData = progressManager.progress.exercises[module]?.[day];
+        const isCompleted = existingData?.completed || false;
+        
+        title.textContent = exercise.title;
+        
+        content.innerHTML = `
+            <div class="space-y-6">
+                ${isCompleted ? `
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                        <h3 class="font-semibold text-green-900 mb-1">
+                            <i class="fas fa-check-circle mr-2"></i>Completed Exercise
+                        </h3>
+                        <p class="text-sm text-green-700">Completed on: ${new Date(existingData.completedAt).toLocaleString()}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                    <h3 class="font-semibold text-gray-900 mb-1">Objective</h3>
+                    <p class="text-sm text-gray-700">${exercise.objective}</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Description</h3>
+                    <p class="text-gray-700">${exercise.description}</p>
+                </div>
+                
+                ${exercise.practiceUrl ? `
+                    <div class="text-sm">
+                        <strong>Practice Site:</strong> 
+                        <a href="${exercise.practiceUrl}" target="_blank" class="text-blue-600 hover:underline">${exercise.practiceUrl}</a>
+                    </div>
+                ` : ''}
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Prompt to Use</h3>
+                    <div class="bg-gray-100 border border-gray-300 rounded p-4 font-mono text-sm whitespace-pre-wrap">${exercise.prompt}</div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Tasks</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        ${exercise.tasks.map(task => `<li>${task}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                ${exercise.learningPoints ? `
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Key Learning Points</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            ${exercise.learningPoints.map(point => `<li>${point}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                <div class="border-t pt-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">${isCompleted ? 'Your Submitted Work' : 'Submit Your Work'}</h3>
+                    <form id="exerciseForm" onsubmit="submitExercise(event, '${module}', '${day}')" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Prompts You Used:</label>
+                            <textarea id="promptsUsed" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Paste the prompts you used..." ${isCompleted ? '' : 'required'}>${existingData?.prompts || ''}</textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Key Results/Insights:</label>
+                            <textarea id="results" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="What did you learn? What worked well?" ${isCompleted ? '' : 'required'}>${existingData?.results || ''}</textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Your Work to SharePoint:</label>
+                            <a href="https://apx365.sharepoint.com/sites/QATestingPractice-MDC/Shared%20Documents/Trainings/Prompt%20Engineering" 
+                               target="_blank" 
+                               class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition wp-button">
+                                <i class="fas fa-upload mr-2"></i>
+                                Upload to SharePoint
+                            </a>
+                            <p class="text-xs text-gray-500 mt-2">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Click to open SharePoint and upload your completed work, create a folder with your name
+                            </p>
+                        </div>
+                        <!-- comentario 
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">SharePoint File Link (after upload):</label>
+                            <input type="url" id="documentUrl" value="${existingData?.documentUrl || ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Paste the SharePoint link to your uploaded file...">
+                            <p class="text-xs text-gray-500 mt-1">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                After uploading to SharePoint, copy the file link and paste it here
+                            </p>
+                        </div>
+                        -->
+                        <div class="flex gap-3 justify-end">
+                            <button type="button" onclick="closeModal('exerciseModal')" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">Close</button>
+                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition wp-button">
+                                <i class="fas fa-${isCompleted ? 'save' : 'check'} mr-2"></i>${isCompleted ? 'Update' : 'Mark Complete'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        
+        modal.classList.add('active');
+    }
+
+    function openChallenge(module) {
+        const challenge = challengeData[module];
+        const modal = document.getElementById('challengeModal');
+        const title = document.getElementById('challengeTitle');
+        const content = document.getElementById('challengeContent');
+        
+        // Check if challenge is already completed and load data
+        const existingData = progressManager.progress.challenges[module];
+        const isCompleted = existingData?.completed || false;
+        
+        title.textContent = challenge.title;
+        
+        content.innerHTML = `
+            <div class="space-y-6">
+                ${isCompleted ? `
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                        <h3 class="font-semibold text-green-900 mb-1">
+                            <i class="fas fa-trophy mr-2"></i>Completed Challenge
+                        </h3>
+                        <p class="text-sm text-green-700">Completed on: ${new Date(existingData.completedAt).toLocaleString()}</p>
+                        <p class="text-sm text-green-700">Score: ${existingData.score || 0} / ${challenge.totalPoints}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                    <h3 class="font-semibold text-gray-900 mb-1">Challenge Scenario</h3>
+                    <p class="font-medium text-gray-800 mb-2">${challenge.scenario}</p>
+                    <p class="text-sm text-gray-700">${challenge.description}</p>
+                </div>
+                
+                <div class="flex gap-6 text-sm">
+                    <div><strong>Estimated Time:</strong> ${challenge.estimatedTime}</div>
+                    <div><strong>Total Points:</strong> ${challenge.totalPoints}</div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Tasks</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        ${challenge.tasks.map(task => `<li>${task}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Deliverables</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        ${challenge.deliverables.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Evaluation Criteria</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        ${challenge.evaluationCriteria.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="border-t pt-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">${isCompleted ? 'Your Submitted Work' : 'Submit Your Challenge'}</h3>
+                    <form id="challengeForm" onsubmit="submitChallenge(event, '${module}')" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Your Challenge to SharePoint:</label>
+                            <a href="https://apx365.sharepoint.com/sites/QATestingPractice-MDC/Shared%20Documents/Trainings/Prompt%20Engineering" 
+                               target="_blank" 
+                               class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition wp-button">
+                                <i class="fas fa-upload mr-2"></i>
+                                Upload to SharePoint
+                            </a>
+                            <p class="text-xs text-gray-500 mt-2">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Click to open SharePoint and upload your completed challenge deliverables
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">SharePoint Portfolio Link (after upload):</label>
+                            <input type="url" id="documentLink" value="${existingData?.documentLink || ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Paste the SharePoint link to your uploaded portfolio..." ${isCompleted ? '' : 'required'}>
+                            <p class="text-xs text-gray-500 mt-1">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                After uploading to SharePoint, copy the file/folder link and paste it here
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Executive Summary:</label>
+                            <textarea id="summary" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Briefly summarize your approach and key deliverables..." ${isCompleted ? '' : 'required'}>${existingData?.summary || ''}</textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Self-Assessment Score (0-${challenge.totalPoints}):</label>
+                            <input type="number" id="selfScore" value="${existingData?.score || ''}" min="0" max="${challenge.totalPoints}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your estimated score" ${isCompleted ? '' : 'required'}>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Reflection:</label>
+                            <textarea id="reflection" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="What did you learn? What challenges did you face?" ${isCompleted ? '' : 'required'}>${existingData?.reflection || ''}</textarea>
+                        </div>
+                        
+                        <div class="flex gap-3 justify-end">
+                            <button type="button" onclick="closeModal('challengeModal')" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">Close</button>
+                            <button type="submit" class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition wp-button">
+                                <i class="fas fa-${isCompleted ? 'save' : 'trophy'} mr-2"></i>${isCompleted ? 'Update' : 'Submit Challenge'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        
+        modal.classList.add('active');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+    }
+
+    function submitExercise(event, module, day) {
+        event.preventDefault();
+        
+        console.log('Submitting exercise:', module, day);
+        
+        // Get form values with validation
+        const promptsUsed = document.getElementById('promptsUsed');
+        const results = document.getElementById('results');
+        const documentUrl = document.getElementById('documentUrl');
+        
+        if (!promptsUsed || !results) {
+            alert('Error: Form fields not found. Please try again.');
+            return;
+        }
+        
+        const formData = {
+            prompts: promptsUsed.value.trim(),
+            results: results.value.trim(),
+            documentUrl: documentUrl ? documentUrl.value.trim() : ''
+        };
+        
+        console.log('Form data collected:', formData);
+        
+        // Validate required fields (only if not already completed)
+        const existingData = progressManager.progress.exercises[module]?.[day];
+        if (!existingData && (!formData.prompts || !formData.results)) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        try {
+            // Mark as complete
+            const filename = progressManager.markExerciseComplete(module, day, formData);
+            
+            console.log('Exercise marked complete, filename:', filename);
+            
+            // Close modal FIRST
+            const modal = document.getElementById('exerciseModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            
+            // Small delay to ensure modal closes before alert
+            setTimeout(() => {
+                alert(`✅ Exercise completed! Great job! 🎉\n\nProgress saved to:\n${filename}\n\n📂 File downloaded to your Downloads folder\n\n💡 Note: Check your browser's download location if you have custom settings.`);
+            }, 100);
+        } catch (error) {
+            console.error('Error submitting exercise:', error);
+            alert(`❌ Error: ${error.message || 'Failed to save progress. Please try again.'}`);
+        }
+    }
+
+    function submitChallenge(event, module) {
+        event.preventDefault();
+        
+        console.log('Submitting challenge:', module);
+        
+        // Get form values with validation
+        const documentLink = document.getElementById('documentLink');
+        const summary = document.getElementById('summary');
+        const selfScore = document.getElementById('selfScore');
+        const reflection = document.getElementById('reflection');
+        
+        if (!documentLink || !summary || !selfScore || !reflection) {
+            alert('Error: Form fields not found. Please try again.');
+            return;
+        }
+        
+        const formData = {
+            documentLink: documentLink.value.trim(),
+            summary: summary.value.trim(),
+            score: parseInt(selfScore.value) || 0,
+            reflection: reflection.value.trim()
+        };
+        
+        console.log('Form data collected:', formData);
+        
+        // Validate required fields
+        if (!formData.documentLink || !formData.summary || !formData.reflection) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Validate score
+        if (isNaN(formData.score) || formData.score < 0) {
+            alert('Please enter a valid score.');
+            return;
+        }
+        
+        try {
+            // Mark as complete
+            const filename = progressManager.markChallengeComplete(module, formData);
+            
+            console.log('Challenge marked complete, filename:', filename);
+            
+            // Close modal FIRST
+            const modal = document.getElementById('challengeModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            
+            // Small delay to ensure modal closes before alert
+            setTimeout(() => {
+                alert(`✅ Challenge submitted! Excellent work! 🏆\n\nProgress saved to:\n${filename}\n\n📂 File downloaded to your Downloads folder\n\n💡 Note: Check your browser's download location if you have custom settings.`);
+            }, 100);
+        } catch (error) {
+            console.error('Error submitting challenge:', error);
+            alert(`❌ Error: ${error.message || 'Failed to save progress. Please try again.'}`);
+        }
+    }
+
+    function resetAllProgress() {
+        if (confirm('Are you sure you want to reset ALL progress? This will create a clean slate.')) {
+            if (confirm('This will delete all your completed exercises and challenges. Are you absolutely sure?')) {
+                try {
+                    // Reset to clean state
+                    progressManager.progress = {
+                        exercises: {},
+                        challenges: {},
+                        metadata: {
+                            createdAt: new Date().toISOString(),
+                            lastModified: new Date().toISOString(),
+                            version: '2.0'
+                        }
+                    };
+                    
+                    // Reset all completion badges to 'Not Started'
+                    document.querySelectorAll('.completion-badge').forEach(badge => {
+                        badge.textContent = 'Not Started';
+                        badge.className = 'completion-badge bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-semibold';
+                    });
+                    
+                    // Update UI
+                    progressManager.updateUI();
+                    
+                    // Update last saved
+                    progressManager.updateLastSaved();
+                    
+                    console.log('All progress reset successfully');
+                    alert('✅ All progress has been reset.\n\nYou can start fresh!');
+                } catch (error) {
+                    console.error('Error resetting progress:', error);
+                    alert('❌ Error resetting progress. Please refresh the page.');
+                }
+            }
+        }
+    }
+    
+    // Manual export function
+    function manualExport() {
+        try {
+            const filename = progressManager.exportProgress();
+            alert(`✅ Progress file created successfully!\n\nFile: ${filename}\n\n📂 Check your browser's Downloads folder\n\n💡 Tip: If you have custom download settings, check the location you specified in your browser settings.\n\nChrome users: Press Ctrl+J to view downloads\nFirefox users: Press Ctrl+Shift+Y to view downloads`);
+        } catch (error) {
+            console.error('Manual export error:', error);
+            alert(`❌ Download may have been blocked by browser settings.\n\nError: ${error.message}\n\n🛠️ Troubleshooting:\n1. Check if downloads are allowed in your browser\n2. Check if you have a custom download location set\n3. Look for a download notification in your browser\n4. Try using a different browser`);
+        }
+    }
+    
+    // Handle file import
+    function handleFileImport(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        // Validate file type
+        if (!file.name.endsWith('.json')) {
+            alert('❌ Invalid file type. Please select a .json file.');
+            event.target.value = ''; // Reset file input
+            return;
+        }
+        
+        // Import the file
+        progressManager.importProgress(file)
+            .then(stats => {
+                alert(`✅ Progress loaded successfully!\n\nExercises completed: ${stats.exercises}\nChallenges completed: ${stats.challenges}\nTotal points: ${stats.points}`);
+                event.target.value = ''; // Reset file input
+            })
+            .catch(error => {
+                console.error('Import error:', error);
+                alert(`❌ Failed to load progress file.\n\nError: ${error.message}\n\nPlease make sure you selected a valid progress file.`);
+                event.target.value = ''; // Reset file input
+            });
+    }
+
+    // REMOVED: Close modal on outside click - prevents accidental data loss
+    // Modal can only be closed by clicking the X button or Cancel button
+
+    // Initialize UI on load
+    document.addEventListener('DOMContentLoaded', function() {
+        progressManager.updateUI();
+        
+        // Initialize completion badges
+        document.querySelectorAll('.completion-badge').forEach(el => {
+            if (!el.classList.contains('bg-green-100')) {
+                el.classList.add('bg-gray-100', 'text-gray-600', 'text-xs', 'px-2', 'py-1', 'rounded', 'font-semibold');
+            }
+        });
+    });
+
+    // Export for debugging
+    window.progressManager = progressManager;
+    </script>
+</body>
+</html>
