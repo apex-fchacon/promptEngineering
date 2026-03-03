@@ -1636,7 +1636,49 @@ Target audience: QA managers and directors`,
     // Progress Manager Class
     class ProgressManager {
         constructor() {
-            // Initialize with empty progress (no localStorage)
+            this.STORAGE_KEY = 'qa_prompt_engineering_progress'; // <-- AÑADIR ESTA LÍNEA
+    
+            // Cambia la inicialización por esta lógica:
+            const saved = localStorage.getItem(this.STORAGE_KEY);
+            if (saved) {
+                this.progress = JSON.parse(saved);
+                console.log('Progreso cargado desde localStorage');
+            } else {
+                this.progress = {
+                    exercises: {},
+                    challenges: {},
+                    metadata: {
+                        createdAt: new Date().toISOString(),
+                        lastModified: new Date().toISOString(),
+                        version: '2.0'
+                    }
+                };
+            }
+            console.log('ProgressManager inicializado');
+        }
+
+        saveToLocalStorage() {
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.progress));
+        }
+
+        // Carga los datos desde localStorage al iniciar
+        loadFromLocalStorage() {
+            const savedProgress = localStorage.getItem(this.STORAGE_KEY);
+            if (savedProgress) {
+                try {
+                    this.progress = JSON.parse(savedProgress);
+                    console.log('Progreso cargado desde localStorage');
+                } catch (e) {
+                    console.error('Error al cargar desde localStorage:', e);
+                    this.setDefaultProgress();
+                }
+            } else {
+                this.setDefaultProgress();
+            }
+        }
+
+        // Configura el estado inicial si no hay datos guardados
+        setDefaultProgress() {
             this.progress = {
                 exercises: {},
                 challenges: {},
@@ -1646,7 +1688,15 @@ Target audience: QA managers and directors`,
                     version: '2.0'
                 }
             };
-            console.log('ProgressManager initialized with clean state');
+        }
+
+        // Guarda el estado actual en localStorage
+        saveToLocalStorage() {
+            try {
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.progress));
+            } catch (e) {
+                console.error('Error al guardar en localStorage:', e);
+            }
         }
 
         // Export progress to JSON file (download)
@@ -1761,6 +1811,8 @@ Target audience: QA managers and directors`,
                         // Load data
                         this.progress = data;
                         
+                        this.saveToLocalStorage();
+
                         // Ensure metadata exists
                         if (!this.progress.metadata) {
                             this.progress.metadata = {
@@ -1768,6 +1820,7 @@ Target audience: QA managers and directors`,
                                 version: '2.0'
                             };
                         }
+
                         
                         // Update UI
                         this.updateUI();
@@ -1814,6 +1867,8 @@ Target audience: QA managers and directors`,
                 ...data
             };
             
+            this.saveToLocalStorage();
+
             // Auto-export progress
             console.log('Auto-exporting progress...');
             const filename = this.exportProgress();
@@ -1835,6 +1890,7 @@ Target audience: QA managers and directors`,
                 ...data
             };
             
+            this.saveToLocalStorage();
             // Auto-export progress
             console.log('Auto-exporting progress...');
             const filename = this.exportProgress();
@@ -1850,7 +1906,7 @@ Target audience: QA managers and directors`,
             if (confirm(`Are you sure you want to reset ${moduleNames[module]}? This will delete all progress for this module.`)) {
                 delete this.progress.exercises[module];
                 delete this.progress.challenges[module];
-                
+                this.saveToLocalStorage();
                 // Export updated progress
                 const filename = this.exportProgress();
                 
@@ -2417,6 +2473,8 @@ Target audience: QA managers and directors`,
                             version: '2.0'
                         }
                     };
+
+                    localStorage.removeItem(progressManager.STORAGE_KEY);
                     
                     // Reset all completion badges to 'Not Started'
                     document.querySelectorAll('.completion-badge').forEach(badge => {
@@ -2429,7 +2487,7 @@ Target audience: QA managers and directors`,
                     
                     // Update last saved
                     progressManager.updateLastSaved();
-                    
+
                     console.log('All progress reset successfully');
                     alert('✅ All progress has been reset.\n\nYou can start fresh!');
                 } catch (error) {
