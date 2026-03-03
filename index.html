@@ -1636,30 +1636,14 @@ Target audience: QA managers and directors`,
     // Progress Manager Class
     class ProgressManager {
         constructor() {
-            this.STORAGE_KEY = 'qa_prompt_engineering_progress'; // <-- AÑADIR ESTA LÍNEA
-    
-            // Cambia la inicialización por esta lógica:
-            const saved = localStorage.getItem(this.STORAGE_KEY);
-            if (saved) {
-                this.progress = JSON.parse(saved);
-                console.log('Progreso cargado desde localStorage');
-            } else {
-                this.progress = {
-                    exercises: {},
-                    challenges: {},
-                    metadata: {
-                        createdAt: new Date().toISOString(),
-                        lastModified: new Date().toISOString(),
-                        version: '2.0'
-                    }
-                };
-            }
+            this.STORAGE_KEY = 'qa_prompt_engineering_progress';
+            this.loadFromLocalStorage();
             console.log('ProgressManager inicializado');
         }
 
-        saveToLocalStorage() {
+        /*saveToLocalStorage() {
             localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.progress));
-        }
+        }*/
 
         // Carga los datos desde localStorage al iniciar
         loadFromLocalStorage() {
@@ -1785,63 +1769,20 @@ Target audience: QA managers and directors`,
         // Import progress from JSON file (upload)
         importProgress(file) {
             return new Promise((resolve, reject) => {
-                // Check file size (max 10MB)
-                const maxSize = 10 * 1024 * 1024;
-                if (file.size > maxSize) {
-                    reject(new Error('File too large. Maximum size is 10MB.'));
-                    return;
-                }
-                
                 const reader = new FileReader();
-                
                 reader.onload = (e) => {
                     try {
                         const data = JSON.parse(e.target.result);
+                        if (!data.exercises || !data.challenges) throw new Error('Formato inválido');
                         
-                        // Validate structure
-                        if (!data.exercises || !data.challenges) {
-                            throw new Error('Invalid progress file format. Missing required fields.');
-                        }
-                        
-                        // Check version
-                        if (data.metadata?.version && data.metadata.version !== '2.0') {
-                            console.warn('Loading from different version:', data.metadata.version);
-                        }
-                        
-                        // Load data
                         this.progress = data;
-                        
-                        this.saveToLocalStorage();
-
-                        // Ensure metadata exists
-                        if (!this.progress.metadata) {
-                            this.progress.metadata = {
-                                createdAt: new Date().toISOString(),
-                                version: '2.0'
-                            };
-                        }
-
-                        
-                        // Update UI
+                        this.saveToLocalStorage(); // <--- AGREGADO
                         this.updateUI();
-                        this.updateLastSaved();
-                        
-                        const stats = this.getCompletionStats();
-                        console.log('Progress imported:', stats.completedExercises, 'exercises,', stats.completedChallenges, 'challenges');
-                        
-                        resolve({
-                            exercises: stats.completedExercises,
-                            challenges: stats.completedChallenges,
-                            points: stats.totalPoints
-                        });
+                        resolve(this.getCompletionStats());
                     } catch (error) {
-                        console.error('Error importing progress:', error);
                         reject(error);
                     }
                 };
-                
-                reader.onerror = () => reject(new Error('Failed to read file'));
-                
                 reader.readAsText(file);
             });
         }
@@ -1855,34 +1796,22 @@ Target audience: QA managers and directors`,
         }
 
         markExerciseComplete(module, day, data) {
-            console.log('Marking exercise complete:', module, day);
-            
             if (!this.progress.exercises[module]) {
                 this.progress.exercises[module] = {};
             }
-            
             this.progress.exercises[module][day] = {
                 completed: true,
                 completedAt: new Date().toISOString(),
                 ...data
             };
             
-            this.saveToLocalStorage();
-
-            // Auto-export progress
-            console.log('Auto-exporting progress...');
-            const filename = this.exportProgress();
-            
-            // Update UI
+            this.saveToLocalStorage(); // <--- AGREGADO
+            this.exportProgress();
             this.updateUI();
-            
-            console.log('Exercise completed and saved to:', filename);
-            return filename;
+            return "Progreso guardado";
         }
 
         markChallengeComplete(module, data) {
-            console.log('Marking challenge complete:', module);
-            
             this.progress.challenges[module] = {
                 completed: true,
                 completedAt: new Date().toISOString(),
@@ -1890,27 +1819,18 @@ Target audience: QA managers and directors`,
                 ...data
             };
             
-            this.saveToLocalStorage();
-            // Auto-export progress
-            console.log('Auto-exporting progress...');
-            const filename = this.exportProgress();
-            
-            // Update UI
+            this.saveToLocalStorage(); // <--- AGREGADO
+            this.exportProgress();
             this.updateUI();
-            
-            console.log('Challenge completed and saved to:', filename);
-            return filename;
+            return "Desafío guardado";
         }
 
         resetModule(module) {
-            if (confirm(`Are you sure you want to reset ${moduleNames[module]}? This will delete all progress for this module.`)) {
+            if (confirm(`¿Estás seguro de reiniciar el ${moduleNames[module]}?`)) {
                 delete this.progress.exercises[module];
                 delete this.progress.challenges[module];
-                this.saveToLocalStorage();
-                // Export updated progress
-                const filename = this.exportProgress();
-                
-                alert(`Module progress reset successfully!\nNew progress file: ${filename}`);
+                this.saveToLocalStorage(); // <--- AGREGADO
+                this.updateUI();
             }
         }
 
@@ -2460,39 +2380,22 @@ Target audience: QA managers and directors`,
     }
 
     function resetAllProgress() {
-        if (confirm('Are you sure you want to reset ALL progress? This will create a clean slate.')) {
-            if (confirm('This will delete all your completed exercises and challenges. Are you absolutely sure?')) {
+        if (confirm('¿Estás seguro de reiniciar TODO el progreso?')) {
+            if (confirm('Esta acción no se puede deshacer. ¿Realmente quieres borrar todo?')) {
                 try {
-                    // Reset to clean state
-                    progressManager.progress = {
-                        exercises: {},
-                        challenges: {},
-                        metadata: {
-                            createdAt: new Date().toISOString(),
-                            lastModified: new Date().toISOString(),
-                            version: '2.0'
-                        }
-                    };
-
-                    localStorage.removeItem(progressManager.STORAGE_KEY);
+                    // Reiniciar objeto en memoria
+                    progressManager.setDefaultProgress();
                     
-                    // Reset all completion badges to 'Not Started'
-                    document.querySelectorAll('.completion-badge').forEach(badge => {
-                        badge.textContent = 'Not Started';
-                        badge.className = 'completion-badge bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-semibold';
-                    });
+                    // Limpiar localStorage
+                    localStorage.removeItem(progressManager.STORAGE_KEY); // <--- AGREGADO
                     
-                    // Update UI
+                    // Actualizar la interfaz
                     progressManager.updateUI();
                     
-                    // Update last saved
-                    progressManager.updateLastSaved();
-
-                    console.log('All progress reset successfully');
-                    alert('✅ All progress has been reset.\n\nYou can start fresh!');
+                    // Opcional: Recargar la página para limpiar estados visuales
+                    location.reload(); 
                 } catch (error) {
-                    console.error('Error resetting progress:', error);
-                    alert('❌ Error resetting progress. Please refresh the page.');
+                    console.error('Error al reiniciar:', error);
                 }
             }
         }
