@@ -2310,7 +2310,7 @@ Target audience: QA managers and directors`,
             
             // Small delay to ensure modal closes before alert
             setTimeout(() => {
-                alert(`✅ Exercise completed! Great job! 🎉\n\nProgress saved to:\n${filename}\n\n📂 File downloaded to your Downloads folder\n\n💡 Note: Check your browser's download location if you have custom settings.`);
+                alert(`✅ Exercise completed! Great job! 🎉`);
             }, 100);
         } catch (error) {
             console.error('Error submitting exercise:', error);
@@ -2357,9 +2357,9 @@ Target audience: QA managers and directors`,
         
         try {
             // Mark as complete
-            const filename = progressManager.markChallengeComplete(module, formData);
+            const filename = progressManager.markChallengeComplete(module);
             
-            console.log('Challenge marked complete, filename:', filename);
+            console.log('Challenge marked complete', filename);
             
             // Close modal FIRST
             const modal = document.getElementById('challengeModal');
