@@ -1811,12 +1811,10 @@ Target audience: QA managers and directors`,
             return "Progreso guardado";
         }
 
-        markChallengeComplete(module, data) {
+        markChallengeComplete(module) {
             this.progress.challenges[module] = {
                 completed: true,
-                completedAt: new Date().toISOString(),
-                score: data.score || 0,
-                ...data
+                completedAt: new Date().toISOString()
             };
             
             this.saveToLocalStorage(); // <--- AGREGADO
@@ -2326,36 +2324,36 @@ Target audience: QA managers and directors`,
         console.log('Submitting challenge:', module);
         
         // Get form values with validation
-        const documentLink = document.getElementById('documentLink');
-        const summary = document.getElementById('summary');
-        const selfScore = document.getElementById('selfScore');
-        const reflection = document.getElementById('reflection');
+        //const documentLink = document.getElementById('documentLink');
+        //const summary = document.getElementById('summary');
+        //const selfScore = document.getElementById('selfScore');
+        //const reflection = document.getElementById('reflection');
         
-        if (!documentLink || !summary || !selfScore || !reflection) {
-            alert('Error: Form fields not found. Please try again.');
-            return;
-        }
+        //if (!documentLink || !summary || !selfScore || !reflection) {
+          //  alert('Error: Form fields not found. Please try again.');
+           // return;
+        //}
         
-        const formData = {
+        /* const formData = {
             documentLink: documentLink.value.trim(),
             summary: summary.value.trim(),
             score: parseInt(selfScore.value) || 0,
             reflection: reflection.value.trim()
-        };
+        }; */
         
-        console.log('Form data collected:', formData);
+        // console.log('Form data collected:', formData);
         
         // Validate required fields
-        if (!formData.documentLink || !formData.summary || !formData.reflection) {
-            alert('Please fill in all required fields.');
-            return;
-        }
+        // if (!formData.documentLink || !formData.summary || !formData.reflection) {
+        //     alert('Please fill in all required fields.');
+        //     return;
+        // }
         
         // Validate score
-        if (isNaN(formData.score) || formData.score < 0) {
-            alert('Please enter a valid score.');
-            return;
-        }
+        // if (isNaN(formData.score) || formData.score < 0) {
+        //     alert('Please enter a valid score.');
+        //     return;
+        // }
         
         try {
             // Mark as complete
