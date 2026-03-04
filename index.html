@@ -1829,6 +1829,7 @@ Target audience: QA managers and directors`,
                 delete this.progress.challenges[module];
                 this.saveToLocalStorage(); // <--- AGREGADO
                 this.updateUI();
+                location.reload(); 
             }
         }
 
@@ -2063,7 +2064,7 @@ Target audience: QA managers and directors`,
         }
     }
 
-    function openExercise(module, day) {
+     function openExercise(module, day) {
         const exercise = exerciseData[module][day];
         const modal = document.getElementById('exerciseModal');
         const title = document.getElementById('exerciseTitle');
@@ -2369,7 +2370,7 @@ Target audience: QA managers and directors`,
             
             // Small delay to ensure modal closes before alert
             setTimeout(() => {
-                alert(`✅ Challenge submitted! Excellent work! 🏆\n\nProgress saved to:\n${filename}\n\n📂 File downloaded to your Downloads folder\n\n💡 Note: Check your browser's download location if you have custom settings.`);
+                alert(`✅ Challenge submitted! Excellent work! 🏆`);
             }, 100);
         } catch (error) {
             console.error('Error submitting challenge:', error);
