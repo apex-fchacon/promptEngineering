@@ -202,8 +202,8 @@
         <div class="wp-content px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">My Progress</h2>
             
-            <!-- Export/Import Section -->
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+            <!-- Export/Import Section - Commented out but not deleted in case it's needed again or a similar function uses it in the future -->
+            <!-- <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
                 <div class="mb-4">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2 flex items-center">
                         <i class="fas fa-save mr-2 text-blue-600"></i>Save & Load Your Progress
@@ -214,28 +214,28 @@
                     </p>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div class="grid md:grid-cols-2 gap-3 mb-4"> -->
                     <!-- Export Button -->
-                    <button onclick="manualExport()" 
+                    <!-- <button onclick="manualExport()" 
                             class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition wp-button flex items-center justify-center">
                         <i class="fas fa-download mr-2"></i>
                         Download Progress File
-                    </button>
+                    </button> -->
                     
                     <!-- Import Button -->
-                    <button onclick="document.getElementById('fileInput').click()" 
+                    <!-- <button onclick="document.getElementById('fileInput').click()" 
                             class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition wp-button flex items-center justify-center">
                         <i class="fas fa-upload mr-2"></i>
                         Load Progress File
-                    </button>
+                    </button> -->
                     
                     <!-- Hidden File Input -->
-                    <input type="file" 
+                    <!-- <input type="file" 
                            id="fileInput" 
                            accept=".json,application/json" 
                            onchange="handleFileImport(event)" 
-                           style="display: none;">
-                </div>
+                           style="display: none;"> -->
+                <!-- </div>
                 
                 <div class="text-center">
                     <span class="text-sm text-gray-600">
@@ -251,7 +251,7 @@
                         Each file is timestamped, so you can keep multiple versions.
                     </p>
                 </div>
-            </div>
+            </div> -->
             
             <div class="grid md:grid-cols-4 gap-6 mb-8">
                 <div class="wp-card rounded-lg p-6 text-center">
@@ -1805,8 +1805,7 @@ Target audience: QA managers and directors`,
                 ...data
             };
             
-            this.saveToLocalStorage(); // <--- AGREGADO
-            this.exportProgress();
+            this.saveToLocalStorage(); 
             this.updateUI();
             return "Progreso guardado";
         }
@@ -1817,8 +1816,7 @@ Target audience: QA managers and directors`,
                 completedAt: new Date().toISOString()
             };
             
-            this.saveToLocalStorage(); // <--- AGREGADO
-            this.exportProgress();
+            this.saveToLocalStorage();
             this.updateUI();
             return "Desafío guardado";
         }
@@ -1827,7 +1825,7 @@ Target audience: QA managers and directors`,
             if (confirm(`¿Estás seguro de reiniciar el ${moduleNames[module]}?`)) {
                 delete this.progress.exercises[module];
                 delete this.progress.challenges[module];
-                this.saveToLocalStorage(); // <--- AGREGADO
+                this.saveToLocalStorage();
                 this.updateUI();
                 location.reload(); 
             }
@@ -2142,13 +2140,14 @@ Target audience: QA managers and directors`,
                             <label class="block text-sm font-medium text-gray-700 mb-2">Upload Your Work to SharePoint:</label>
                             <a href="https://apx365.sharepoint.com/sites/QATestingPractice-MDC/Shared%20Documents/Trainings/Prompt%20Engineering" 
                                target="_blank" 
+                               onclick="enableSubmitBtn('exerciseSubmitBtn')"
                                class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition wp-button">
                                 <i class="fas fa-upload mr-2"></i>
                                 Upload to SharePoint
                             </a>
                             <p class="text-xs text-gray-500 mt-2">
                                 <i class="fas fa-info-circle mr-1"></i>
-                                Click to open SharePoint and upload your completed work, create a folder with your name
+                                Click to open SharePoint and upload your work — the submit button will unlock automatically.
                             </p>
                         </div>
                         <!-- comentario 
@@ -2163,7 +2162,9 @@ Target audience: QA managers and directors`,
                         -->
                         <div class="flex gap-3 justify-end">
                             <button type="button" onclick="closeModal('exerciseModal')" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">Close</button>
-                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition wp-button">
+                            <button id="exerciseSubmitBtn" disabled type="submit" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition wp-button"
+                            title="Please upload your work to SharePoint first">
                                 <i class="fas fa-${isCompleted ? 'save' : 'check'} mr-2"></i>${isCompleted ? 'Update' : 'Mark Complete'}
                             </button>
                         </div>
@@ -2237,7 +2238,8 @@ Target audience: QA managers and directors`,
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Upload Your Challenge to SharePoint:</label>
                             <a href="https://apx365.sharepoint.com/sites/QATestingPractice-MDC/Shared%20Documents/Trainings/Prompt%20Engineering" 
-                               target="_blank" 
+                                onclick="enableSubmitBtn('challengeSubmitBtn')
+                                target="_blank" 
                                class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition wp-button">
                                 <i class="fas fa-upload mr-2"></i>
                                 Upload to SharePoint
@@ -2251,7 +2253,9 @@ Target audience: QA managers and directors`,
                         
                         <div class="flex gap-3 justify-end">
                             <button type="button" onclick="closeModal('challengeModal')" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">Close</button>
-                            <button type="submit" class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition wp-button">
+                            <button id="challengeSubmitBtn" type="submit" disabled
+                                class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition wp-button"
+                                title="Please upload your work to SharePoint first">
                                 <i class="fas fa-${isCompleted ? 'save' : 'trophy'} mr-2"></i>${isCompleted ? 'Update' : 'Complete Challenge'}
                             </button>
                         </div>
@@ -2450,6 +2454,20 @@ Target audience: QA managers and directors`,
             }
         });
     });
+
+    function enableSubmitBtn(btnId) {
+        setTimeout(() => {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+            btn.disabled = false;
+            btn.removeAttribute('title');
+            if (btnId === 'exerciseSubmitBtn') {
+                btn.className = 'px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition wp-button';
+            } else {
+                btn.className = 'px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition wp-button';
+            }
+        }, 300);
+    }
 
     // Export for debugging
     window.progressManager = progressManager;
